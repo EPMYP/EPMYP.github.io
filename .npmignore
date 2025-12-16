@@ -1,0 +1,43 @@
+# Development files
+.vscode
+.idea
+*.log
+*.local
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Git files
+.git
+.gitignore
+.github
+
+# Documentation (optional - remove if you want to include docs)
+*.md
+!README.md
+
+# Server files (if not needed in package)
+server/
+!server/package.json
+
+# Build files (will be included if needed)
+# dist
+
+# Test files
+test
+tests
+*.test.js
+*.spec.js
+
+# CI/CD
+.github/workflows/*.yml
+!publish.yml
+
+# Deployment scripts
+*-deploy.sh
+
+# Node modules (will be installed by users)
+node_modules
+
