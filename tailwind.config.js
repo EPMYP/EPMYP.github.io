@@ -1,29 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // 确保扫描范围包含所有组件文件
   content: [
     "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./src/**/*.{vue,js,ts,jsx,tsx}", // 关键：覆盖src下所有组件
   ],
   theme: {
     extend: {
-      // 定义 primary 颜色（示例使用蓝色系，可自行修改）
+      // 必须在这里定义primary颜色
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9', // 主色值
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-        },
+        primary: '#2563eb', // 示例：蓝色（可替换为你的主色）
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'), // 之前配置的插件
-  ],
-}
+  // 确保typography插件已配置（如果之前加过）
+  plugins: [require('@tailwindcss/typography')],
+};
