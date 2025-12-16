@@ -1,0 +1,93 @@
+/* 导入Tailwind基础样式、组件样式、工具类样式 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基础样式层 - 全局样式重置和基础设置 */
+@layer base {
+  body {
+    @apply bg-light text-dark antialiased; /* 全局背景色、文字色、抗锯齿 */
+  }
+  /* 标题样式统一 */
+  h1 {
+    @apply text-3xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-2xl font-bold mb-3;
+  }
+  h3 {
+    @apply text-xl font-bold mb-2;
+  }
+  /* 链接样式统一 */
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors;
+  }
+}
+
+/* 组件样式层 - 自定义可复用组件样式 */
+@layer components {
+  /* 基础按钮样式 */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all;
+  }
+  /* 主按钮样式 */
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90 active:bg-primary/80;
+  }
+  /* 次要按钮样式 */
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90 active:bg-secondary/80;
+  }
+  /* 轮廓按钮样式 */
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary/10;
+  }
+  /* 卡片组件样式 */
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow;
+  }
+  /* 标签组件样式 */
+  .tag {
+    @apply px-2 py-1 rounded-full text-sm bg-gray-100 hover:bg-gray-200 transition-colors;
+  }
+}
+
+/* 自定义滚动条样式 - 提升用户体验 */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+/* Markdown渲染样式 - 统一Markdown内容的展示效果 */
+.markdown {
+  @apply prose prose-green max-w-none;
+}
+.markdown p {
+  @apply my-4;
+}
+.markdown img {
+  @apply rounded-lg shadow-md my-6 mx-auto;
+}
+.markdown code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
+}
+.markdown pre {
+  @apply bg-gray-900 text-white p-4 rounded-lg overflow-x-auto my-4;
+}
+.markdown blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}
+/* src/style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 你的其他样式... */
+.markdown {
+  @apply prose prose-green max-w-none; /* 现在prose类会被识别 */
+}
