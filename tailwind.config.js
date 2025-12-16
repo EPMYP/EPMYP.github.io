@@ -1,18 +1,13 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  // 确保扫描范围包含所有组件文件
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}", // 关键：覆盖src下所有组件
-  ],
+  content: ["./index.html", "./src/**/*.{vue,js,ts}"],
   theme: {
     extend: {
-      // 必须在这里定义primary颜色
       colors: {
-        primary: '#2563eb', // 示例：蓝色（可替换为你的主色）
+        // 定义 light 颜色（示例：浅灰色）
+        light: '#f3f4f6', 
+        // 之前定义的 primary 等颜色可保留
       },
     },
   },
-  // 确保typography插件已配置（如果之前加过）
   plugins: [require('@tailwindcss/typography')],
 };
