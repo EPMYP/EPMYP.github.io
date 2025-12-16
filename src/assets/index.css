@@ -1,9 +1,0 @@
-/* src/assets/index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* 基础样式补充 */
-body {
-  @apply bg-gray-50 text-gray-800;
-}

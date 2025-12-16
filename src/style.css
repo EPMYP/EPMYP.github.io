@@ -1,0 +1,270 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 深色主题（默认）- 黑客帝国风格 */
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  /* 黑客帝国配色 - 绿色系 */
+  --tech-primary: #00ff00;
+  --tech-secondary: #00cc00;
+  --tech-accent: #00ff88;
+  --tech-bg-dark: #0a0a0a;
+  --tech-bg-darker: #000000;
+  --tech-border: rgba(0, 255, 0, 0.4);
+  --tech-text: #00ff00;
+  --tech-text-muted: #88ff88;
+  --tech-bg-card: rgba(0, 20, 0, 0.95);
+  --tech-shadow: rgba(0, 255, 0, 0.3);
+}
+
+/* 浅色主题 - 神经网络+黑客风格 */
+:root[data-theme="light"] {
+  --tech-primary: #0066ff;
+  --tech-secondary: #0099ff;
+  --tech-accent: #00ccff;
+  --tech-bg-dark: #f0f5ff;
+  --tech-bg-darker: #ffffff;
+  --tech-border: rgba(0, 102, 255, 0.4);
+  --tech-text: #003366;
+  --tech-text-muted: #0066cc;
+  --tech-bg-card: rgba(240, 248, 255, 0.95);
+  --tech-shadow: rgba(0, 102, 255, 0.2);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--tech-bg-darker);
+  color: var(--tech-text);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 科技感背景动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-15px) translateX(10px); }
+  50% { transform: translateY(-20px) translateX(0px); }
+  75% { transform: translateY(-15px) translateX(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+}
+
+/* 代码风格滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 14, 39, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* 选择文本样式 */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: var(--tech-text);
+}
+
+/* 科技感动画元素 */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes matrix {
+  0% { opacity: 0; transform: translateY(-20px); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes dataFlow {
+  0% { transform: translateX(-100%) translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100vw) translateY(-100px); opacity: 0; }
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* 网络节点样式 */
+.tech-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--tech-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--tech-primary);
+  animation: nodePulse 2s ease-in-out infinite;
+}
+
+.tech-node::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--tech-primary);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* 数据流效果 */
+.tech-data-flow {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--tech-primary), transparent);
+  animation: dataFlow 3s linear infinite;
+  opacity: 0.6;
+}
+
+/* 扫描线效果 */
+.tech-scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--tech-primary), transparent);
+  animation: scan 4s linear infinite;
+  opacity: 0.5;
+}
+
+/* 代码终端风格 */
+.tech-terminal {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--tech-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  color: var(--tech-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-terminal::before {
+  content: '> ';
+  color: var(--tech-primary);
+}
+
+.tech-terminal::after {
+  content: '_';
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* 网络连接线 */
+.tech-connection {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--tech-primary), transparent);
+  opacity: 0.3;
+}
+
+/* 粒子效果 */
+.tech-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--tech-primary);
+  border-radius: 50%;
+  animation: matrix 3s ease-in-out infinite;
+}
+
+/* 全息效果 */
+.tech-hologram {
+  position: relative;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--tech-border);
+  backdrop-filter: blur(10px);
+}
+
+.tech-hologram::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+  animation: scan 3s linear infinite;
+}
+
+/* 3D卡片效果 */
+.tech-card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+}
+
+.tech-card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* 霓虹灯效果 */
+.tech-neon {
+  text-shadow: 
+    0 0 5px var(--tech-primary),
+    0 0 10px var(--tech-primary),
+    0 0 15px var(--tech-primary),
+    0 0 20px var(--tech-primary);
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* 二进制雨效果 */
+.tech-binary-rain {
+  position: absolute;
+  color: var(--tech-accent);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  opacity: 0.3;
+  animation: matrix 5s linear infinite;
+}
+
+/* 响应式网格背景 */
+.tech-grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}

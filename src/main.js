@@ -1,18 +1,14 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router'; // 路由
-import pinia from './store';  // 状态管理
-import './assets/index.css';  // Tailwind 样式（如果没有这个文件，先创建空文件）
+// 导入Vue核心函数，用于创建Vue应用实例
+import { createApp } from 'vue'
+// 导入全局样式文件
+import './style.css'
+// 导入根组件App.vue
+import App from './App.vue'
+// 导入主题初始化函数
+import { initTheme } from './utils/theme.js'
 
-// 1. 创建 App 实例
-const app = createApp(App);
+// 初始化主题（从localStorage读取保存的主题设置）
+initTheme()
 
-// 2. 注册插件（顺序不能乱）
-app.use(pinia);   // 先注册 Pinia
-app.use(router);  // 再注册路由
-
-// 3. 挂载到页面 #app 元素（必须和 index.html 中的 id 一致）
-app.mount('#app');
-
-// 调试：确认挂载成功
-console.log('Vue App 挂载成功', app);
+// 创建Vue应用实例并挂载到id为'app'的DOM元素上
+createApp(App).mount('#app')
